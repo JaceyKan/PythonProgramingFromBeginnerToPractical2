@@ -66,11 +66,20 @@ integratedTerminal  集成终端
 
 
 
-#### traceback
+#### traceback  （追踪）
 
 程序无法成功运行时，解释器将提供一个traceback。
 
 traceback是一条记录，指出了解释器尝试运行代码时，在什么地方陷入了困境。
+
+
+
+### 2.3　字符串
+
+```python
+name = "ladA loVeLace"
+print(name.title())	#Lada Lovelace
+```
 
 
 
