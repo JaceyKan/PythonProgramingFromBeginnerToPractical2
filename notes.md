@@ -14,7 +14,7 @@
 
 选择菜单**Tools  ——》 Build** 或按 **Ctrl + B**（在macOS系统中为Command + B）来运行程序。
 
-![image-20240219234444768](C:\Users\kanji\AppData\Roaming\Typora\typora-user-images\image-20240219234444768.png)
+![image-20240219234444768](imgs\image-20240219234444768.png)
 
 
 
@@ -26,14 +26,14 @@ internalConsole  内部控制台
 
 integratedTerminal  集成终端
 
-![image-20240219232452512](C:\Users\kanji\AppData\Roaming\Typora\typora-user-images\image-20240219232452512.png)
+![image-20240219232452512](imgs\image-20240219232452512.png)
 
 让 VS Code 在调试控制台（而不是集成的终端窗口）中显示输出后，
 将无法运行使用了 input()函数的程序。 调试控制台是只读的，这意味着它不能接受输入。  
 
 
 
-![image-20240219234359549](C:\Users\kanji\AppData\Roaming\Typora\typora-user-images\image-20240219234359549.png)
+![image-20240219234359549](imgs\image-20240219234359549.png)
 
 从编辑器切换到终端窗口，可按 Ctrl + `；
 提供程序输入后，可再次按 Ctrl +``从终端窗口切换到编辑器窗口  
@@ -348,6 +348,159 @@ print(squares2) # [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 ```
 
 
+
+### 4.4 使用列表的一部分
+
+```python
+# 处理列表的部分元素，Python称之为切片
+# 要创建切片，可指定要使用的第一个元素和最后一个元素的索引。
+# 与函数range()一样，Python在到达第二个索引之前的元素后停止。
+
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print(players[0:3]) # ['charles', 'martina', 'michael']
+
+print(players[1:4]) # ['martina', 'michael', 'florence']
+
+# 如果没有指定第一个索引，Python将自动从列表开头开始
+print(players[:4]) # ['charles', 'martina', 'michael', 'florence']
+
+# 让切片终止于列表末尾
+print(players[2:]) # ['michael', 'florence', 'eli']
+
+# 负数索引返回离列表末尾相应距离的元素，因此你可以输出列表末尾的任意切片。
+# 例如，如果要输出名单上的最后三名队员，可使用切片players[-3:]
+print(players[-3:]) # ['michael', 'florence', 'eli']
+
+# --------------------------------------
+# 遍历切片
+for player in players[:4]:
+    print(player)
+
+# --------------------------------------
+# 复制列表
+# 要复制列表，可创建一个包含整个列表的切片，方法是同时省略起始索引和终止索引([:])。
+my_foods = ['apple', 'cake', 'yogurt']
+my_friend_foods = my_foods[:]
+
+print(f"my favorite foods are: {my_foods}")
+print(f"my friend's favorite foods are: {my_friend_foods}")
+
+my_foods.append('ice cream')
+my_friend_foods.append('orange')
+
+print(f"my favorite foods are: {my_foods}")
+print(f"my friend's favorite foods are: {my_friend_foods}")
+# my favorite foods are: ['apple', 'cake', 'yogurt', 'ice cream']
+# my friend's favorite foods are: ['apple', 'cake', 'yogurt', 'orange']
+
+# -------------------------------------
+# 如果只是将my_foods赋给friend_foods，就不能得到两个列表。
+# 演示在不使用切片的情况下复制列表的情况:
+my_colors = ['pink', 'blue', 'grey']
+friend_colors = my_colors
+
+my_colors.append('yellow')
+friend_colors.append('purple')
+
+print(f"my colors are: {my_colors}")
+print(f"friends colors are: {friend_colors}")
+# my colors are: ['pink', 'blue', 'grey', 'yellow', 'purple']
+# friends colors are: ['pink', 'blue', 'grey', 'yellow', 'purple']
+```
+
+
+
+### 4.5 元组
+
+```python
+# 列表非常适合用于存储在程序运行期间可能变化的数据集。
+# Python将不能修改的值称为不可变的，
+# 不可变的列表被称为元组。
+# 元组看起来很像列表，但使用圆括号而非中括号来标识。
+# 定义元组后，就可使用索引来访问其元素，就像访问列表元素一样。
+
+dimensions = (200, 50)
+print(dimensions[0])
+print(dimensions[1])
+
+# dimensions[0] = 250 # TypeErro: 'tuple' object does not support item assignment
+
+# -------------------------------------
+# 严格地说，元组是由逗号标识的，圆括号只是让元组看起来更整洁、更清晰。
+# 如果你要定义只包含一个元素的元组，必须在这个元素后面加上逗号
+my_tuple = (3,)
+
+# -----------------------------------
+# 使用for循环来遍历元组中的所有值
+for dimension in dimensions:
+    print(dimension)
+
+# -----------------------------------
+# 虽然不能修改元组的元素，但可以给存储元组的变量赋值。
+# 因此，如果要修改前述矩形的尺寸，可重新定义整个元组：
+dimensions = (400, 100)
+print(f"Modified dimensions: {dimensions}")
+
+# -----------------------------------
+# 相比于列表，元组是更简单的数据结构。
+# 如果需要存储的一组值在程序的整个生命周期内都不变，就可以使用元组。
+```
+
+
+
+### 4.6　设置代码格式
+
+**Python改进提案** (Python Enhancement Proposal,PEP)。
+
+**PEP 8**是最古老的PEP之一，向Python程序员提供了代码格式设置指南。
+
+
+
+* 缩进
+
+  PEP 8建议每级缩进都使用四个空格。这既可提高可读性，又留下了足够的多级缩进空间。
+
+  你在编写代码时绝对应该使用制表符键，但一定要对编辑器进行设置，使其在文档中插入空格而不是制表符。
+
+* 行长
+
+  建议每行不超过79字符
+
+  在大多数编辑器中，可以设置一个视觉标志（通常是一条竖线），让你知道不能越过的界线在什么地方。
+
+  PEP 8还建议注释的行长不应超过72字符，因为有些工具为大型项目自动生成文档时，会在每行注释开头添加格式化字符。
+
+* 空行
+
+  要将程序的不同部分分开，可使用空行。
+
+  例如，如果你有五行创建列表的代码，还有三行处理该列表的代码，那么用一个空行将这两部分隔开是合适的。
+
+  然而，你不应使用三四个空行将其隔开。
+
+
+
+#### 在VSCode中将所有已存在的Tab转换为空格：
+
+File ——》Preference ——》setting ——》输入 editor
+
+![image-20240225224509856](imgs\image-20240225224509856.png)
+
+你可以通过设置 `editor.renderWhitespace: all` 让编辑器将所有的空格符、制表符等全部都渲染出来。这样你就能够一眼看出这个文件中使用的究竟是制表符还是空格符，以及有没有在哪里不小心多打了一个空格等。
+
+
+
+#### 设置缩进参考线
+
+ editor.rulers: [80]
+
+
+
+> 参考：
+>
+> [VSCode 优化你的编辑器设置](https://github.com/jxcangel/vscode/blob/master/13%20!%20%E4%BC%98%E5%8C%96%E4%BD%A0%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%E8%AE%BE%E7%BD%AE.md)
+>
+> [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
 
 
 
