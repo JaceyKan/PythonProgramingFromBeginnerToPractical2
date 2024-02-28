@@ -504,6 +504,239 @@ File ——》Preference ——》setting ——》输入 editor
 
 
 
+### 五、if语句
+
+```python
+# 对于大多数汽车，应以首字母大写的方式打印其名称，
+# 但对于汽车名'bmw'，应以全大写的方式打印
+cars = ['audi', 'bmw', 'subaru', 'toyota']
+
+for car in cars:
+    if car == 'bmw':
+        print(car.upper())
+    else:
+        print(car.title())
+
+# --------------------------------
+# 在Python中检查是否相等时区分大小写。
+car = 'Audi'
+print(car == 'audi') # False
+
+# 如需忽略大小写，可将变量的值转换为小写，再进行比较
+print(car.lower() == 'audi') # True
+
+# ---------------------------------
+# 检查是否不相等
+# 判断两个值是否不等，可结合使用惊叹号和等号(!=)，其中的惊叹号表示不
+request_topping = 'mushrooms'
+if request_topping != 'anchovies':
+    print('Hold the anchovies.')
+# 你编写的大多数条件表达式检查两个值是否相等，
+# 但有时候检查两个值是否不等的效率更高。
+    
+# ---------------------------------
+# 数值比较
+age = 18
+if age == 18:
+    print('You are 18 years old.')
+
+answer = 17
+if answer != 42:
+    print("That's not the correct answer. Please try again!")
+
+print(age >= 21)
+print(age <= 20)
+# ---------------------------------
+# 检查多个条件 and
+age_0 = 22
+age_1 = 18
+print(age_0 >= 21 and age_1 >= 21)
+
+age_1 = 21
+print(age_0 >= 21 and age_1 >= 21)
+
+# 为改善可读性，可将每个测试分别放在一对圆括号内，但并非必须这样做。
+print((age_0 >= 21) and (age_1 >= 21))
+# ---------------------------------
+# 使用or检查多个条件
+age_0 = 22
+age_1 = 18
+print(age_0 >= 21 or age_1 >= 21)
+
+age_0 = 18
+print(age_0 >= 21 or age_1 >= 21)
+
+# ---------------------------------
+# 关键字in
+request_toppings = ['mushrooms', 'onions', 'pineapple']
+print('mushrooms' in request_toppings)
+print('tomato' in request_toppings)
+
+# ---------------------------------
+# 关键字not in
+banned_users = ['Lily', 'Angela', 'Hellen']
+user = 'Jacey'
+if user not in banned_users:
+    print(f'{user.title()}, you can post a response if you wish.')
+```
+
+
+
+#### 5.3 if语句
+
+```python
+# --------------------------
+# if语句
+age = 18
+if age >= 18:
+    print("You are old enough to vote!")
+    print("Have you registered to vote yet?")
+
+# --------------------------
+# if-else语句
+age2 = 17
+if age2 >= 18:
+    print("You are old enough to vote!")
+    print("Have you registered to vote yet?")
+else:
+    print("Sorry, you are too young to vote.")
+    print("Please register to vote as soon as you turn 18!")
+#--------------------------
+# if-elif-else语句
+age = 12
+if age < 4:
+    print("Your admission cost is free.")
+elif age < 18:
+    print("Your admission cost is $25.")
+else:
+    print("Your admission cost is $40.")
+# 为了让代码更简洁，可不在if-elif-else代码块中打印门票价格，
+# 而只在其中设置门票价格，并在它后面添加一个简单的函数调用print()：
+age_2 = 20
+
+if age_2 < 4:
+    price = 0
+elif age_2 < 18:
+    price = 25
+else:
+    price = 40
+
+print(f"Your admission cost is ${price}.")
+
+#--------------------------
+# 使用多个elif代码块
+# 可根据需要使用任意数量的elif代码块
+age_3 = 70
+
+if age_3 < 4:
+    price = 0
+elif age_3 < 18:
+    price = 25
+elif age_3 < 65:
+    price = 40
+else:
+    price = 20
+
+print(f"Your admission cost is ${price}.")
+
+#--------------------------
+# 省略else代码块
+# else是一条包罗万象的语句，只要不满足任何if或elif中的条件测试，其中的代码就会执行。
+# 这可能引入无效甚至恶意的数据。
+# 如果知道最终要测试的条件，应考虑使用一个elif代码块来代替else代码块。
+age_4 = 10
+
+if age_4 < 4:
+    price = 0
+elif age_4 < 18:
+    price = 25
+elif age_4 < 65:
+    price = 40
+elif age_4 >= 65:
+    price = 20
+
+print(f"Your admission cost is ${price}.")
+
+#--------------------------
+# 测试多个条件
+# 有时候必须检查你关心的所有条件。
+# 在这种情况下，应使用一系列不包含elif和else代码块的简单if语句。
+requested_toppings = ['mushrooms', 'extra cheese']
+
+if 'mushrooms' in requested_toppings:
+    print("Add mushrooms.")
+if 'pepperoni' in requested_toppings:
+    print("Add pepperoni.")
+if 'extra cheese' in requested_toppings:
+    print('Add extra cheese.')
+
+print("\nFinished making your pizza!")
+# 如果只想执行一个代码块，就使用if-elif-else结构；
+# 如果要执行多个代码块，就使用一系列独立的if语句。
+```
+
+
+
+#### 5.4　使用if语句处理列表
+
+```python
+requested_toppings = ['mushrooms', 'garlic','extra cheese']
+
+for requested_topping in requested_toppings:
+    print(f"Add {requested_topping}")
+
+print("\nFinished making your pizza!")
+
+# --------------------------
+# 比萨店的青椒用完了，该如何处理呢？
+# 为妥善地处理这种情况，可在for循环中包含一条if语句
+print("\n")
+for requested_topping in requested_toppings:
+    if requested_topping == 'garlic':
+        print("Sorry, we are out of garlic right now!")
+    else:
+        print(f"Add {requested_topping}")
+
+print("\nFinished making your pizza!")
+
+# --------------------------
+# 确定列表不是空的
+print("------------------------")
+requested_toppings = []
+if requested_toppings:
+    for requested_topping in requested_toppings:
+        if requested_topping == 'garlic':
+            print("Sorry, we are out of garlic right now!")
+        else:
+            print(f"Add {requested_topping}")
+else:
+    print("Are you sure you want a plain pizza?")
+# --------------------------
+# 使用多个列表
+print("------------------------")
+available_toppings = ['mushrooms', 'green peppers', 'onion', 'extra cheese', 
+                      'olives', 'pinapple', 'pepperoni']
+requested_toppings = ['mushrooms', 'french fries', 'extra cheese']
+
+if requested_toppings:
+    for requested_topping in requested_toppings:
+        if requested_topping in available_toppings:
+            print(f"Add {requested_topping}")
+        else:
+            print(f"Sorry, we don't have {requested_topping}")
+    print("Your pizza has finished!")
+else:
+    print("Are you sure you want a plain pizza?")
+```
+
+
+
+#### 5.5　设置if语句的格式
+
+在诸如==、>=和<=等比较运算符两边各添加一个空格
+
+
+
 ## 附录D 使用Git进行版本控制
 
 ### 配置 .gitignore
