@@ -257,7 +257,7 @@ print(colors)
 # 如果你要从列表中删除一个元素，且不再以任何方式使用它，就使用del语句；
 # 如果你要在删除元素后还能继续使用它，就使用方法pop()。
 
-# remove 删除指定值的元素
+# remove 删除指定值的元素 
 # remove()只删除第一个指定的值
 # 如果要删除的值可能在列表中出现多次，就需要使用循环来确保将每个值都删除
 colors.remove('yellow')
@@ -582,7 +582,7 @@ if user not in banned_users:
 
 
 
-#### 5.3 if语句
+#### 5.3	if语句
 
 ```python
 # --------------------------
@@ -677,7 +677,7 @@ print("\nFinished making your pizza!")
 
 
 
-#### 5.4　使用if语句处理列表
+#### 5.4	使用if语句处理列表
 
 ```python
 requested_toppings = ['mushrooms', 'garlic','extra cheese']
@@ -737,6 +737,12 @@ else:
 
 
 
+### 六、字典
+
+
+
+
+
 ## 附录D 使用Git进行版本控制
 
 ### 配置 .gitignore
@@ -754,6 +760,15 @@ resources  // 忽略resources文件夹
 
 ```
 git checkout .
+```
+
+
+
+### 提交到远程服务器
+
+```
+git remote add origin git@github.com:JaceyKan/PythonProgramingFromBeginnerToPractical2.git
+git push -u origin master
 ```
 
 
