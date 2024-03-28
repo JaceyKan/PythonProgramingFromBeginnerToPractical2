@@ -204,3 +204,157 @@ for name in members:
 
 # -------------------------------
 # 6.4 嵌套
+# 6.4.1 字典列表
+alien_7 = {'color': 'yellow', 'point': 5}
+alien_8 = {'color': 'red', 'point': 10}
+alien_9 = {'color': 'blue', 'point': 15}
+
+aliens = [alien_7, alien_8, alien_9]
+for alien in aliens:
+    print(alien)
+
+# ---------------------
+# 使用range自动生成外星人列表
+aliens = []
+
+for alien_number in range(30):
+    new_alien = {'color': 'green', 'points': 5, 'speed': 'slow'}
+    aliens.append(new_alien)
+
+# 显示前5个外星人
+for alien in aliens[:5]:
+    print(alien)
+
+# 显示创建了多少个外星人
+print(f"Total number of aliens: {len(aliens)}")
+
+# -----------------------------
+# 要将前三个外星人修改为黄色、速度为中等且值10分
+print('-----------------------------')
+aliens = []
+
+for alien_number in range(30):
+    new_alien = {'color': 'green', 'point': 5, 'speed': 'slow'}
+    aliens.append(new_alien)
+
+for alien in aliens[:3]:
+    if alien['color'] == 'green':
+        alien['color'] = 'yellow'
+        alien['point'] = 10
+        alien['speed'] = 'medium'
+    elif alien['color'] == 'yellow':
+        alien['color'] = 'red'
+        alien['point'] = 15
+        alien['speed'] = 'fast'
+
+for alien in aliens[:5]:
+    print(alien)
+
+# --------------------------
+# 在字典中存储列表
+pizza = {
+    'crust': 'thick',
+    'toppings': ['mushrooms', 'extra cheese']
+}
+
+# 如果函数调用print()中的字符串很长，可以在合适的位置分行。
+# 只需要在每行末尾都加上引号，同时对于除第一行外的其他各行，都在行首加上引号并缩进
+# Python将自动合并圆括号内的所有字符串
+print(f"You ordered a {pizza['crust']}-crust pizza "
+      "with the following toppings:")
+
+for topping in pizza['toppings']:
+    print(f"\t{topping}")
+
+# ----------------------------------
+favorite_languages_3 = {
+    'joy': ['c', 'python'],
+    'hellen': ['rubby', 'java'],
+    'sara': ['java script', 'python'],
+    'molly': ['c'],
+    'edward': []
+}
+
+for name, languages in favorite_languages_3.items():
+    if len(languages) == 1:
+        print(f"{name.title()}'s favorite languages is:")
+    elif len(languages) > 1:
+        print(f"{name.title()}'s favorite languages are:")
+
+    for language in languages:
+        print(f"\t{language.title()}")
+
+# ----------------------------------
+# 在字典中存储字典
+users = {
+    'kk': {
+        'first_name': 'kan',
+        'last_name': 'jacey',
+        'location': 'ShangHai'
+    },
+
+    'tt': {
+        'first_name': 'zhang',
+        'last_name': 'peach',
+        'location': 'bed'
+    },
+}
+
+for user_name,user_info in users.items():
+    print(f"UserName: {user_name}")
+    full_name = f"{user_info['first_name']} {user_info['last_name']}"
+    location = user_info['location']
+
+    print(f"\tFull name: {full_name.title()}")
+    print(f"\tLocation: {location}")
+
+# ------------------------------------------
+# 练习6-7 人
+people = [
+    {
+        'first_name': 'Kan',
+        'last_name': 'Jacey',
+        'age': 34,
+        'city': 'ShangHai',
+    },
+    {
+        'first_name': 'Zhang',
+        'last_name': 'Peach',
+        'age': 1,
+        'city': 'Bed'
+    },
+    {
+        'first_name': 'Yue',
+        'last_name': 'Yun Peng',
+        'age': 40,
+        'city': 'BeiJing'
+    },
+]
+
+for member in people:
+    print('-------------')
+    for k, v in member.items():
+        print(f"{k}: {v}")
+
+# --------------------------------
+# 练习6-8 pets
+pet_1 = {
+    'type': 'cat',
+    'master': 'Jacey'
+}
+
+pet_2 = {
+    'type': 'dog',
+    'master': 'peach'
+}
+
+pet_3 = {
+    'type': 'parrot',
+    'master': 'slucx'
+}
+
+pets = [pet_1, pet_2, pet_3]
+for pet in pets:
+    print("---------")
+    print(f"Type: {pet['type']}")
+    print(f"Master: {pet['master']}")
